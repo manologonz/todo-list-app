@@ -10,6 +10,7 @@ media
 *.bak
 
 # If you are using PyCharm #
+.vscode
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/dictionaries

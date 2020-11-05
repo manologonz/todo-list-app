@@ -26,8 +26,7 @@ def signupuser(request):
                 login(request, user)
                 return redirect(currenttodos)
             except IntegrityError:
-                return render(request, 'todo/signupuser.html',
-                              {'form': UserCreationForm(), 'error': "The user already exits"})
+                return render(request, 'todo/signupuser.html', {'form': UserCreationForm(), 'error': "The user already exits"})
         else:
             return render(request, 'todo/signupuser.html', {'form': UserCreationForm(), 'error': "Passwords don't match"})
 
@@ -45,7 +44,7 @@ def loginuser(request):
     elif request.method == 'POST':
         user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
         if user is None:
-            return render(request, 'todo/login.html', {'form': AuthenticationForm(), 'error': "Username and password don't match"})
+            return render(request, 'todo/login.html', {'form': AuthenticationForm(), 'error': "Username and password don't match"}, 'text/html', status=402)
         else:
             login(request, user)
             return redirect(currenttodos)
